@@ -14,13 +14,11 @@ import {
   MapPin,
   Menu,
   Phone,
-  Star,
   Terminal,
   X,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
-// ─── Hooks ───────────────────────────────────────────────────────────────────
 function useReveal(threshold = 0.1) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
@@ -63,7 +61,6 @@ function useTypingEffect(text: string, speed = 55, delay = 600) {
   return { displayed, done };
 }
 
-// ─── Data ────────────────────────────────────────────────────────────────────
 const NAV_LINKS = [
   "Home",
   "About",
@@ -73,91 +70,80 @@ const NAV_LINKS = [
   "Contact",
 ];
 
-const TECH_STACK = ["Java", "Spring Boot", "MySQL", "REST APIs", "Python"];
+const TECH_STACK = ["C", "C++", "Python", "IoT", "Arduino", "Docker"];
 
 const SKILLS: { category: string; icon: React.ReactNode; items: string[] }[] = [
   {
     category: "Languages",
     icon: <Terminal className="w-4 h-4" />,
-    items: ["Java", "C", "C++", "Python"],
+    items: ["C", "C++", "Python"],
   },
   {
-    category: "Backend",
+    category: "Database",
+    icon: <Code2 className="w-4 h-4" />,
+    items: ["MySQL"],
+  },
+  {
+    category: "Systems & Platforms",
     icon: <Layers className="w-4 h-4" />,
-    items: [
-      "Core Java",
-      "JDBC",
-      "Spring Core",
-      "Spring MVC",
-      "Spring Boot",
-      "REST APIs",
-    ],
+    items: ["Linux (Basic)", "Docker", "IoT Fundamentals"],
   },
   {
-    category: "Databases",
-    icon: <Code2 className="w-4 h-4" />,
-    items: ["MySQL", "JPA", "Hibernate"],
-  },
-  {
-    category: "Web",
-    icon: <Code2 className="w-4 h-4" />,
-    items: ["HTML", "CSS", "JavaScript"],
-  },
-  {
-    category: "Tools & Platforms",
+    category: "Tools",
     icon: <Terminal className="w-4 h-4" />,
-    items: ["Git", "GitHub", "Maven"],
+    items: ["Arduino IDE", "VS Code"],
   },
   {
     category: "Core Concepts",
     icon: <Layers className="w-4 h-4" />,
-    items: ["Data Structures", "Operating Systems", "MVC Architecture"],
+    items: ["Programming Fundamentals", "Embedded Systems", "IoT"],
+  },
+  {
+    category: "Soft Skills",
+    icon: <Code2 className="w-4 h-4" />,
+    items: ["Problem Solving", "Communication", "Teamwork", "Adaptability"],
   },
 ];
 
 const PROJECTS = [
   {
-    title: "Employee Management System",
-    tech: ["Java", "Spring Boot", "MySQL", "REST APIs"],
-    desc: "A backend-driven employee management system supporting secure CRUD operations, leave approval workflows, and role-based access control.",
+    title: "IoT-Based Home Automation System",
+    tech: ["IoT", "Microcontroller", "Embedded C"],
+    desc: "An IoT-based automation system to remotely control household appliances using a microcontroller-based architecture.",
     bullets: [
-      "Secure CRUD operations with leave approval workflows",
-      "Scalable REST APIs for onboarding and role-based access control",
-      "MySQL via JPA/Hibernate for efficient data persistence",
-      "Layered MVC architecture (Controller–Service–Repository)",
+      "Implemented real-time monitoring and control through a connected interface",
+      "Designed for improved convenience and energy efficiency in smart homes",
+      "Microcontroller-based architecture for reliable device connectivity",
     ],
   },
   {
-    title: "AI Powered Resume Fraud Detection",
-    tech: ["Java", "Python", "NLP", "Machine Learning"],
-    desc: "A machine learning system to detect fraudulent resume data using NLP, integrating Java backend with Python ML models.",
+    title: "Auto-Billing Smart Shopping Trolley",
+    tech: ["RFID", "ESP8266", "NodeMCU", "IoT"],
+    desc: "A smart retail automation system using RFID technology and ESP8266 NodeMCU for automatic product detection and billing.",
     bullets: [
-      "ML system detecting fraudulent resume data using NLP",
-      "Java backend integrated with Python ML models",
-      "Automated screening reducing manual verification effort",
-      "Structured data processing pipeline for improved accuracy",
+      "Automatic product detection and bill calculation to reduce checkout time",
+      "Integrated load sensors and display modules for real-time tracking",
+      "Reduced manual effort in retail store checkout workflows",
     ],
   },
   {
-    title: "Virtual Assistant for Desktop",
-    tech: ["HTML", "CSS", "JavaScript"],
-    desc: "An interactive desktop-based virtual assistant for web search and task automation with a responsive UI.",
+    title: "Autonomous Robot",
+    tech: ["Ultrasonic Sensors", "IR Sensors", "Embedded C"],
+    desc: "A robotic system capable of obstacle detection and automated navigation using integrated sensor arrays.",
     bullets: [
-      "Interactive assistant for web search and automation",
-      "Event-driven programming for real-time user interaction",
-      "Responsive and user-friendly interface design",
-      "Optimised client-side scripting for performance",
+      "Integrated ultrasonic and IR sensors for real-time obstacle detection",
+      "Implemented embedded control logic for navigation accuracy",
+      "Automated movement adjustment to improve system reliability",
     ],
   },
 ];
 
-// ─── Nav ────────────────────────────────────────────────────────────────────
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const { displayed, done } = useTypingEffect(
-    "Bridging Java backend expertise with clean system design.",
+    "Building smart embedded systems and IoT solutions.",
   );
 
   useEffect(() => {
@@ -185,7 +171,6 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#0a0a0f] text-gray-100 font-sans">
-      {/* Global styles */}
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
         * { font-family: 'Inter', sans-serif; }
@@ -231,9 +216,7 @@ export default function App() {
           background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
           background-size: 24px 24px;
         }
-        .fade-in {
-          animation: fadeInUp 0.6s ease forwards;
-        }
+        .fade-in { animation: fadeInUp 0.6s ease forwards; }
         @keyframes fadeInUp {
           from { opacity: 0; transform: translateY(20px); }
           to { opacity: 1; transform: translateY(0); }
@@ -244,16 +227,14 @@ export default function App() {
         .delay-400 { animation-delay: 0.4s; opacity: 0; }
         .delay-500 { animation-delay: 0.5s; opacity: 0; }
         .delay-600 { animation-delay: 0.6s; opacity: 0; }
-        .nav-active {
-          color: #60a5fa;
-        }
+        .nav-active { color: #60a5fa; }
         .timeline-dot {
           background: linear-gradient(135deg, #3b82f6, #8b5cf6);
           box-shadow: 0 0 12px rgba(96,165,250,0.5);
         }
       `}</style>
 
-      {/* ── Navbar ─────────────────────────────────────────────────── */}
+      {/* Navbar */}
       <header
         className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
           scrolled
@@ -263,7 +244,7 @@ export default function App() {
       >
         <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
           <span className="font-display font-bold text-xl gradient-text cursor-default">
-            KK.
+            SK.
           </span>
 
           <ul className="hidden md:flex gap-1">
@@ -286,7 +267,7 @@ export default function App() {
           </ul>
 
           <a
-            href="/assets/uploads/Kartik_Kamate-CSE-2026-1-1.pdf"
+            href="/assets/uploads/2026-Shrutika-Resume-1.pdf"
             download
             data-ocid="nav.resume.button"
             className="hidden md:inline-flex items-center gap-2 px-4 py-1.5 text-sm rounded-md border border-blue-500/40 text-blue-400 hover:bg-blue-500/10 transition-colors"
@@ -325,7 +306,7 @@ export default function App() {
               ))}
               <li>
                 <a
-                  href="/assets/uploads/Kartik_Kamate-CSE-2026-1-1.pdf"
+                  href="/assets/uploads/2026-Shrutika-Resume-1.pdf"
                   download
                   className="flex items-center gap-2 px-3 py-2 text-sm text-blue-400"
                 >
@@ -337,43 +318,37 @@ export default function App() {
         )}
       </header>
 
-      {/* ── Hero ───────────────────────────────────────────────────── */}
+      {/* Hero */}
       <section
         id="home"
         className="relative min-h-screen flex items-center dot-grid overflow-hidden"
       >
-        {/* Subtle radial glow */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600/8 rounded-full blur-3xl" />
-          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-600/8 rounded-full blur-3xl" />
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-600/8 rounded-full blur-3xl" />
+          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-blue-600/8 rounded-full blur-3xl" />
         </div>
 
         <div className="relative z-10 max-w-6xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-12 items-center">
-          {/* Left: Text */}
           <div>
             <p className="fade-in delay-100 text-blue-400 text-sm font-medium mb-4 flex items-center gap-2">
               <span className="inline-block w-6 h-px bg-blue-400" />
-              Salutations, Recruiter 👋
+              Hi there, Recruiter 👋
             </p>
-
             <h1 className="fade-in delay-200 font-display text-5xl sm:text-6xl font-bold leading-tight mb-2">
-              Kartik
+              Shrutika
             </h1>
             <h1 className="fade-in delay-300 font-display text-5xl sm:text-6xl font-bold leading-tight mb-6">
-              <span className="gradient-text glow-blue">Kamate</span>
+              <span className="gradient-text glow-blue">Kumbhar</span>
             </h1>
-
             <p className="fade-in delay-400 text-gray-400 text-base sm:text-lg leading-relaxed mb-2 min-h-[3rem]">
               {displayed}
               {!done && (
                 <span className="inline-block w-0.5 h-4 bg-blue-400 ml-0.5 animate-pulse" />
               )}
             </p>
-
             <p className="fade-in delay-500 text-gray-500 text-sm mb-8 flex items-center gap-1.5">
-              <MapPin className="w-3.5 h-3.5" /> Nipani, Karnataka · CSE 2026
+              <MapPin className="w-3.5 h-3.5" /> India · E&TC 2026
             </p>
-
             <div className="fade-in delay-500 mb-8">
               <p className="text-gray-500 text-xs uppercase tracking-widest mb-3">
                 Current tech focus
@@ -389,7 +364,6 @@ export default function App() {
                 ))}
               </div>
             </div>
-
             <div className="fade-in delay-600 flex flex-wrap gap-3">
               <button
                 type="button"
@@ -403,7 +377,7 @@ export default function App() {
                 View Projects
               </button>
               <a
-                href="/assets/uploads/Kartik_Kamate-CSE-2026-1-1.pdf"
+                href="/assets/uploads/2026-Shrutika-Resume-1.pdf"
                 download
                 data-ocid="hero.resume.secondary_button"
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold border border-white/10 text-gray-300 hover:border-white/20 hover:text-white transition-all"
@@ -411,14 +385,8 @@ export default function App() {
                 <Download className="w-4 h-4" /> Download CV
               </a>
             </div>
-
             <div className="fade-in delay-600 flex gap-3 mt-6">
               {[
-                {
-                  ocid: "hero.github.link",
-                  href: "https://github.com",
-                  icon: <Github className="w-4 h-4" />,
-                },
                 {
                   ocid: "hero.linkedin.link",
                   href: "https://www.linkedin.com",
@@ -426,7 +394,7 @@ export default function App() {
                 },
                 {
                   ocid: "hero.email.link",
-                  href: "mailto:kartikkamate00@gmail.com",
+                  href: "mailto:shrutikakumbhar6604@gmail.com",
                   icon: <Mail className="w-4 h-4" />,
                 },
               ].map((s) => (
@@ -444,17 +412,15 @@ export default function App() {
             </div>
           </div>
 
-          {/* Right: Photo */}
           <div className="flex justify-center md:justify-end">
             <div className="fade-in delay-300 relative">
               <div className="photo-ring">
                 <img
-                  src="/assets/uploads/WhatsApp-Image-2026-03-14-at-4.31.08-PM-2.jpeg"
-                  alt="Kartik Kamate"
+                  src="/assets/uploads/WhatsApp-Image-2026-03-16-at-5.52.15-PM-1.jpeg"
+                  alt="Shrutika Kumbhar"
                   className="w-64 h-64 sm:w-72 sm:h-72 rounded-full object-cover"
                 />
               </div>
-              {/* Floating badge */}
               <div className="absolute -bottom-3 -left-4 bg-[#0f0f1a] border border-white/10 rounded-xl px-3 py-2 flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
                 <span className="text-xs text-gray-300 font-medium">
@@ -466,7 +432,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* ── About ──────────────────────────────────────────────────── */}
+      {/* About */}
       <RevealSection id="about">
         <div className="max-w-6xl mx-auto px-6 py-24">
           <SectionHeader label="About Me" title="Who I am" />
@@ -475,33 +441,33 @@ export default function App() {
               <p>
                 I'm a{" "}
                 <span className="text-white font-medium">
-                  Computer Science Engineering
+                  Electronics and Telecommunication Engineering
                 </span>{" "}
-                student specializing in{" "}
+                student with experience in{" "}
                 <span className="text-blue-400 font-medium">
-                  Java Backend Development
+                  IoT systems, automation projects, and embedded programming
                 </span>
-                . Experienced in building scalable RESTful APIs using Spring
-                Boot and integrating MySQL databases.
+                .
               </p>
               <p>
-                Passionate about writing clean, maintainable code and solving
-                real-world problems using efficient system design principles.
-                Currently pursuing BE at Sri Sairam College of Engineering.
+                Skilled in C/C++, Python, and basic web technologies with
+                interest in building scalable software solutions and learning
+                modern development tools. Currently pursuing B.E. at Ashokrao
+                Mane Group of Institutions.
               </p>
               <div className="pt-4 space-y-3">
                 {[
                   {
                     icon: <Mail className="w-4 h-4 text-blue-400" />,
-                    val: "kartikkamate00@gmail.com",
+                    val: "shrutikakumbhar6604@gmail.com",
                   },
                   {
                     icon: <Phone className="w-4 h-4 text-purple-400" />,
-                    val: "7259720546",
+                    val: "+91 8951314124",
                   },
                   {
                     icon: <MapPin className="w-4 h-4 text-pink-400" />,
-                    val: "Nipani, Karnataka",
+                    val: "India",
                   },
                 ].map(({ icon, val }) => (
                   <div key={val} className="flex items-center gap-3 text-sm">
@@ -513,13 +479,13 @@ export default function App() {
             </div>
             <div className="grid grid-cols-2 gap-4">
               {[
-                { value: "8.34", label: "CGPA", sub: "Academic Score" },
+                { value: "7.0", label: "CGPA", sub: "Academic Score" },
                 { value: "3+", label: "Projects", sub: "Built & Deployed" },
-                { value: "1", label: "Internship", sub: "Motion Cut" },
+                { value: "1", label: "Internship", sub: "Robosap Innovations" },
                 {
                   value: "2",
                   label: "Certifications",
-                  sub: "Microsoft & HackerRank",
+                  sub: "EduSkills & Coursera",
                 },
               ].map((s) => (
                 <div key={s.label} className="card-hover rounded-xl p-5">
@@ -539,19 +505,18 @@ export default function App() {
 
       <hr className="section-divider" />
 
-      {/* ── Experience ─────────────────────────────────────────────── */}
+      {/* Experience */}
       <RevealSection id="experience">
         <div className="max-w-4xl mx-auto px-6 py-24">
           <SectionHeader label="Work" title="Experience" />
           <div className="mt-12 space-y-6">
             <ExperienceCard
-              jobTitle="Java Backend Intern"
-              company="Motion Cut"
-              period="Aug 2025 – Sep 2025"
+              jobTitle="Robotics Intern"
+              company="Robosap Innovations Pvt. Ltd."
+              period="Internship"
               bullets={[
-                "Assisted in backend feature development using Java and MySQL.",
-                "Applied Object-Oriented Programming (OOP) principles to improve modularity and maintainability.",
-                "Participated in debugging, API testing, and agile development workflows.",
+                "Worked on robotics projects involving sensor integration and actuator control.",
+                "Assisted in hardware testing, debugging, and embedded programming.",
               ]}
             />
           </div>
@@ -560,7 +525,7 @@ export default function App() {
 
       <hr className="section-divider" />
 
-      {/* ── Projects ───────────────────────────────────────────────── */}
+      {/* Projects */}
       <RevealSection id="projects">
         <div className="max-w-6xl mx-auto px-6 py-24">
           <SectionHeader label="Work" title="Featured Projects" />
@@ -574,13 +539,13 @@ export default function App() {
 
       <hr className="section-divider" />
 
-      {/* ── Skills ─────────────────────────────────────────────────── */}
+      {/* Skills */}
       <RevealSection id="skills">
         <div className="max-w-6xl mx-auto px-6 py-24">
           <SectionHeader label="Tools" title="Skills & Technologies" />
           <p className="text-gray-500 text-sm mt-2 max-w-xl">
-            A backend-focused engineer with hands-on experience across the Java
-            ecosystem, databases, and web fundamentals.
+            An embedded systems and IoT engineer with hands-on experience in
+            C/C++, Python, and microcontroller platforms.
           </p>
           <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {SKILLS.map((g) => (
@@ -592,11 +557,10 @@ export default function App() {
 
       <hr className="section-divider" />
 
-      {/* ── Education + Certs ──────────────────────────────────────── */}
+      {/* Education + Certs */}
       <RevealSection id="education">
         <div className="max-w-4xl mx-auto px-6 py-20">
           <div className="grid md:grid-cols-2 gap-10">
-            {/* Education */}
             <div>
               <SectionHeader label="Study" title="Education" />
               <div className="card-hover rounded-xl p-6 mt-8 flex gap-4">
@@ -605,38 +569,37 @@ export default function App() {
                 </div>
                 <div>
                   <h3 className="text-white font-semibold">
-                    Sri Sairam College of Engineering
+                    Ashokrao Mane Group of Institutions
                   </h3>
                   <p className="text-gray-400 text-sm mt-1">
-                    BE – Computer Science Engineering
+                    B.E. – Electronics and Telecommunication
                   </p>
                   <div className="flex gap-2 mt-3">
                     <span className="text-xs px-2.5 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">
-                      CSE 2026
+                      E&TC 2026
                     </span>
                     <span className="text-xs px-2.5 py-0.5 rounded-full bg-green-500/10 text-green-400 border border-green-500/20">
-                      CGPA 8.34
+                      CGPA 7.0
                     </span>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Certifications */}
             <div>
               <SectionHeader label="Credentials" title="Certifications" />
               <div className="mt-8 space-y-3">
                 {[
                   {
-                    title: "Microsoft AZ-900",
-                    sub: "Cloud Computing Fundamentals",
-                    issuer: "Microsoft",
+                    title: "Robotics and Embedded Systems Internship",
+                    sub: "Internship Certification",
+                    issuer: "EduSkills",
                     color: "#3b82f6",
                   },
                   {
-                    title: "Java Basics",
-                    sub: "Programming Certification",
-                    issuer: "HackerRank",
+                    title: "Introduction to Automotive Embedded Systems",
+                    sub: "Online Course",
+                    issuer: "Coursera",
                     color: "#22c55e",
                   },
                 ].map((c) => (
@@ -663,73 +626,18 @@ export default function App() {
               </div>
             </div>
           </div>
-
-          {/* Achievements */}
-          <div className="mt-12">
-            <SectionHeader label="Recognition" title="Achievements" />
-            <div className="grid sm:grid-cols-2 gap-4 mt-8">
-              {[
-                {
-                  title: "5 Star Java",
-                  platform: "HackerRank",
-                  stars: 5,
-                  color: "#f59e0b",
-                },
-                {
-                  title: "4 Star C & SQL",
-                  platform: "HackerRank",
-                  stars: 4,
-                  color: "#f59e0b",
-                },
-              ].map((a) => (
-                <div
-                  key={a.title}
-                  className="card-hover rounded-xl p-5 flex gap-4 items-center"
-                >
-                  <div
-                    className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0"
-                    style={{ background: `${a.color}15` }}
-                  >
-                    <Star className="w-5 h-5" style={{ color: a.color }} />
-                  </div>
-                  <div>
-                    <div className="text-white font-semibold text-sm">
-                      {a.title}
-                    </div>
-                    <div className="flex gap-0.5 mt-1">
-                      {(["s1", "s2", "s3", "s4", "s5"] as const).map(
-                        (sk, si) => (
-                          <Star
-                            key={sk}
-                            className="w-3 h-3"
-                            style={{
-                              color: si < a.stars ? a.color : "#374151",
-                              fill: si < a.stars ? a.color : "transparent",
-                            }}
-                          />
-                        ),
-                      )}
-                    </div>
-                    <div className="text-xs text-gray-500 mt-0.5">
-                      {a.platform}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </RevealSection>
 
       <hr className="section-divider" />
 
-      {/* ── Contact ────────────────────────────────────────────────── */}
+      {/* Contact */}
       <RevealSection id="contact">
         <div className="max-w-3xl mx-auto px-6 py-24 text-center">
           <SectionHeader label="Reach out" title="Get in Touch" centered />
           <p className="text-gray-500 text-sm mt-3 mb-10">
-            Currently open to backend engineering roles and internship
-            opportunities. Feel free to drop me a message.
+            Currently open to engineering roles, internships, and IoT/embedded
+            systems opportunities.
           </p>
           <div className="grid sm:grid-cols-2 gap-4 text-left">
             {[
@@ -737,33 +645,25 @@ export default function App() {
                 ocid: "contact.email.link",
                 icon: <Mail className="w-5 h-5" />,
                 label: "Email",
-                value: "kartikkamate00@gmail.com",
-                href: "mailto:kartikkamate00@gmail.com",
+                value: "shrutikakumbhar6604@gmail.com",
+                href: "mailto:shrutikakumbhar6604@gmail.com",
                 color: "#f472b6",
               },
               {
                 ocid: "contact.phone.link",
                 icon: <Phone className="w-5 h-5" />,
                 label: "Phone",
-                value: "+91 7259720546",
-                href: "tel:7259720546",
+                value: "+91 8951314124",
+                href: "tel:+918951314124",
                 color: "#34d399",
               },
               {
                 ocid: "contact.linkedin.link",
                 icon: <Linkedin className="w-5 h-5" />,
                 label: "LinkedIn",
-                value: "linkedin.com/in/kartik",
+                value: "linkedin.com/in/shrutika",
                 href: "https://www.linkedin.com",
                 color: "#60a5fa",
-              },
-              {
-                ocid: "contact.github.link",
-                icon: <Github className="w-5 h-5" />,
-                label: "GitHub",
-                value: "github.com/kartik",
-                href: "https://github.com",
-                color: "#a78bfa",
               },
             ].map((c) => (
               <a
@@ -793,11 +693,11 @@ export default function App() {
         </div>
       </RevealSection>
 
-      {/* ── Footer ─────────────────────────────────────────────────── */}
+      {/* Footer */}
       <footer className="border-t border-white/5 py-8 text-center">
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <span className="font-display font-bold gradient-text">KK.</span>
+            <span className="font-display font-bold gradient-text">SK.</span>
             <div className="flex gap-6 text-xs text-gray-600">
               {NAV_LINKS.map((l) => (
                 <button
@@ -813,15 +713,11 @@ export default function App() {
             <div className="flex gap-3">
               {[
                 {
-                  href: "https://github.com",
-                  icon: <Github className="w-4 h-4" />,
-                },
-                {
                   href: "https://www.linkedin.com",
                   icon: <Linkedin className="w-4 h-4" />,
                 },
                 {
-                  href: "mailto:kartikkamate00@gmail.com",
+                  href: "mailto:shrutikakumbhar6604@gmail.com",
                   icon: <Mail className="w-4 h-4" />,
                 },
               ].map(({ href, icon }) => (
@@ -838,7 +734,7 @@ export default function App() {
             </div>
           </div>
           <p className="text-xs text-gray-700 mt-6">
-            © {new Date().getFullYear()} Kartik Vishnu Kamate. Built with{" "}
+            © {new Date().getFullYear()} Shrutika Kumbhar. Built with{" "}
             <a
               href={`https://caffeine.ai?utm_source=caffeine-footer&utm_medium=referral&utm_content=${encodeURIComponent(window.location.hostname)}`}
               target="_blank"
@@ -854,7 +750,6 @@ export default function App() {
   );
 }
 
-// ─── Shared components ───────────────────────────────────────────────────────
 function RevealSection({
   id,
   children,
@@ -967,16 +862,6 @@ function ProjectCard({
           </li>
         ))}
       </ul>
-      <a
-        data-ocid={`projects.github.link.${index}`}
-        href="https://github.com"
-        target="_blank"
-        rel="noreferrer"
-        className="inline-flex items-center gap-1.5 text-xs text-gray-500 hover:text-white transition-colors mt-auto"
-      >
-        <Github className="w-3.5 h-3.5" /> View on GitHub{" "}
-        <ExternalLink className="w-3 h-3" />
-      </a>
     </div>
   );
 }
